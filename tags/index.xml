@@ -2,9 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 简单的Blog</title>
+<<<<<<< HEAD
     <link>https://liuyuxing1024.github.io/tags/</link>
     <description>Recent content in Tags on 简单的Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://liuyuxing1024.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+=======
+    <link>https://github.com/liuyuxing1024/liuyuxing1024.github.io.git/tags/</link>
+    <description>Recent content in Tags on 简单的Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://github.com/liuyuxing1024/liuyuxing1024.github.io.git/tags/index.xml" rel="self" type="application/rss+xml" />
+>>>>>>> 09f1d6b2a71473febfcc80d086005e8ce6045df8
   </channel>
 </rss>

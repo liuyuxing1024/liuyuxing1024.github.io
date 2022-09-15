@@ -2,10 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+<<<<<<< HEAD
     <loc>https://liuyuxing1024.github.io/categories/</loc>
   </url><url>
     <loc>https://liuyuxing1024.github.io/tags/</loc>
   </url><url>
     <loc>https://liuyuxing1024.github.io/</loc>
+=======
+    <loc>https://github.com/liuyuxing1024/liuyuxing1024.github.io.git/categories/</loc>
+  </url><url>
+    <loc>https://github.com/liuyuxing1024/liuyuxing1024.github.io.git/tags/</loc>
+  </url><url>
+    <loc>https://github.com/liuyuxing1024/liuyuxing1024.github.io.git/</loc>
+>>>>>>> 09f1d6b2a71473febfcc80d086005e8ce6045df8
   </url>
 </urlset>
