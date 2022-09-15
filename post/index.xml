@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 简单的Blog</title>
+    <link>https://liuyuxing1024.github.io/post/</link>
+    <description>Recent content in Posts on 简单的Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Sep 2022 14:42:31 +0800</lastBuildDate><atom:link href="https://liuyuxing1024.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First</title>
+      <link>https://liuyuxing1024.github.io/post/first/</link>
+      <pubDate>Thu, 15 Sep 2022 14:42:31 +0800</pubDate>
+      
+      <guid>https://liuyuxing1024.github.io/post/first/</guid>
+      <description>第一条信息 干点什么呐？
+来一张图片吧</description>
+    </item>
+    
+  </channel>
+</rss>

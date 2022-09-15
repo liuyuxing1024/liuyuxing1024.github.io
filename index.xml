@@ -5,7 +5,18 @@
     <link>https://liuyuxing1024.github.io/</link>
     <description>Recent content on 简单的Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://liuyuxing1024.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language>
+    <lastBuildDate>Thu, 15 Sep 2022 14:42:31 +0800</lastBuildDate><atom:link href="https://liuyuxing1024.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First</title>
+      <link>https://liuyuxing1024.github.io/post/first/</link>
+      <pubDate>Thu, 15 Sep 2022 14:42:31 +0800</pubDate>
+      
+      <guid>https://liuyuxing1024.github.io/post/first/</guid>
+      <description>第一条信息 干点什么呐？
+来一张图片吧</description>
+    </item>
+    
     <item>
       <title>About</title>
       <link>https://liuyuxing1024.github.io/about/</link>
