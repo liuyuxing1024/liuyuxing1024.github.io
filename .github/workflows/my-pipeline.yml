@@ -32,12 +32,16 @@ jobs:
 
       - name: build
         #run: hugo --minify#
-        run: hugo -D
+        #run: hugo -D
+        run: hugo --minify
 
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          external_repository: liuyuxing1024/liuyuxing1024.github.io
+          keep_files: false 
           publish_dir: ./public
+          publish_branch: main
           # cname: xxx.com # 如果是自定义域名需要修改
