@@ -1,87 +1,15 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
-<head>
-  <link href="https://gmpg.org/xfn/11" rel="profile">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="Hugo 0.102.3" />
-
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>简单的Blog</title>
-  <meta name="description" content="一个简单的博客" />
-
-  
-  <link type="text/css" rel="stylesheet" href="https://liuyuxing1024.github.io/css/print.css" media="print">
-  <link type="text/css" rel="stylesheet" href="https://liuyuxing1024.github.io/css/poole.css">
-  <link type="text/css" rel="stylesheet" href="https://liuyuxing1024.github.io/css/syntax.css">
-  <link type="text/css" rel="stylesheet" href="https://liuyuxing1024.github.io/css/hyde.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
-
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
-
-  
-  <link href="https://liuyuxing1024.github.io/index.xml" rel="alternate" type="application/rss+xml" title="简单的Blog" />
-  
-</head>
-
-  <body class="theme-base-0d ">
-  <aside class="sidebar">
-  <div class="container sidebar-sticky">
-    <div class="sidebar-about">
-      <a href="https://liuyuxing1024.github.io/"><h1>简单的Blog</h1></a>
-      <p class="lead">
-       一个简单的博客 
-      </p>
-    </div>
-
-    <nav>
-      <ul class="sidebar-nav">
-        <li><a href="https://liuyuxing1024.github.io/">Home</a> </li>
-        <li><a href="https://www.baidu.com/"> Baidu </a></li><li><a href="https://github.com/liuyuxing1024/"> Github </a></li>
-      </ul>
-    </nav>
-
-    <p>&copy; 2023. All rights reserved. </p>
-  </div>
-</aside>
-
-    <main class="content container">
-    <div class="posts">
-<article class="post">
-  <h1 class="post-title">
-    <a href="https://liuyuxing1024.github.io/post/%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/"></a>
-  </h1>
-  <time datetime="0001-01-01T00:00:00Z" class="post-date">Mon, Jan 1, 0001</time>
-  来源:https://mp.weixin.qq.com/s/R6o6T-qGvgrB4xxXdUhd7A
+<!doctype html><html xmlns=http://www.w3.org/1999/xhtml xml:lang=en-us lang=en-us><head><link href=https://gmpg.org/xfn/11 rel=profile><meta charset=utf-8><meta name=generator content="Hugo 0.102.3"><meta name=viewport content="width=device-width,initial-scale=1"><title>简单的Blog</title><meta name=description content="一个简单的博客"><link type=text/css rel=stylesheet href=https://liuyuxing1024.github.iocss/print.css media=print><link type=text/css rel=stylesheet href=https://liuyuxing1024.github.iocss/poole.css><link type=text/css rel=stylesheet href=https://liuyuxing1024.github.iocss/syntax.css><link type=text/css rel=stylesheet href=https://liuyuxing1024.github.iocss/hyde.css><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700"><link rel=apple-touch-icon-precomposed sizes=144x144 href=/apple-touch-icon-144-precomposed.png><link rel="shortcut icon" href=/favicon.png><link href=https://liuyuxing1024.github.io/index.xml rel=alternate type=application/rss+xml title=简单的Blog></head><body class=theme-base-0d><aside class=sidebar><div class="container sidebar-sticky"><div class=sidebar-about><a href=https://liuyuxing1024.github.io><h1>简单的Blog</h1></a><p class=lead>一个简单的博客</p></div><nav><ul class=sidebar-nav><li><a href=https://liuyuxing1024.github.io>Home</a></li><li><a href=https://www.baidu.com/>Baidu</a></li><li><a href=https://github.com/liuyuxing1024/>Github</a></li></ul></nav><p>&copy; 2023. All rights reserved.</p></div></aside><main class="content container"><div class=posts><article class=post><h1 class=post-title><a href=https://liuyuxing1024.github.io/post/%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/></a></h1><time datetime=0001-01-01T00:00:00Z class=post-date>Mon, Jan 1, 0001</time>
+来源:https://mp.weixin.qq.com/s/R6o6T-qGvgrB4xxXdUhd7A
 GitHub Actions 自动构建 之前的文章我们已经讲过了如何利用 GitHub Pages 快速搭建一个自己的博客，并且我对现有比较热门的几个静态网站生成框架进行了对比，结论是选择 Hugo 作为技术选型。具体内容不再赘述，请自行查阅。
 简单！这可能是最快速的个人博客搭建姿势！|原创
 因为Hugo在发布到 GitHub之前需要自行本地编译打包，然后才能把打包好的源码 push 到远程仓库，这就显得很繁琐。于是有人问，可以不需要手动编译直接部署吗？
 答案当然是有的！一切理论上可以偷懒的事情，都有程序做了，GitHub Actions 就解决了这个问题。持续集成由很多操作组成，比如抓取代码、运行测试、登录远程服务器，发布到第三方服务等等。GitHub 把这些操作就称为 Actions。
 配置 Actions 1.准备工作 可以访问的 GitHub Pages Git 本地源码 Hugo 环境 如果你阅读了之前的文章，这些准备工作已经就绪。
 2.创建 sub mdules hugo 的主题（ themes） 是通过 Git 的 sub modules 拉取的，在 Git Actions 会在自动处理过程中会依赖子项目，没有 sub modules 文件会导致构建失败。这就需要我们在下载本地主题的时候是用 Git 的子 moudle 来拉取的，举个例子。
-# 创建项目hugo new site quickstart # 拉取主题git initgit submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke# 添加主题到 配置文件中echo theme = \&#34;ananke\&#34; &gt;&gt; config.
-  
-  <div class="read-more-link">
-    <a href="/post/%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/">Read More…</a>
-  </div>
-  
-</article><article class="post">
-  <h1 class="post-title">
-    <a href="https://liuyuxing1024.github.io/post/%E9%9A%8F%E4%BE%BF%E5%86%99%E7%82%B9/"></a>
-  </h1>
-  <time datetime="0001-01-01T00:00:00Z" class="post-date">Mon, Jan 1, 0001</time>
-  人 事 
-  
-</article>
-</div>
-    </main>
-
-    
-      
-    
-  </body>
-</html>
+# 创建项目
+hugo new site quickstart # 拉取主题
+git init
+git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+# 添加主题到 配置文件中
+echo theme = \"ananke\" >> config.<div class=read-more-link><a href=/post/%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/>Read More…</a></div></article><article class=post><h1 class=post-title><a href=https://liuyuxing1024.github.io/post/%E9%9A%8F%E4%BE%BF%E5%86%99%E7%82%B9/></a></h1><time datetime=0001-01-01T00:00:00Z class=post-date>Mon, Jan 1, 0001</time>
+人 事</article></div></main></body></html>
