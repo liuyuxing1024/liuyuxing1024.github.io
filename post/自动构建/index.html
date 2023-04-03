@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="https://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.102.3" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title> &middot; 简单的Blog</title>
+  <meta name="description" content="" />
+
+  
+  <link type="text/css" rel="stylesheet" href="https://liuyuxing1024.github.iocss/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="https://liuyuxing1024.github.iocss/poole.css">
+  <link type="text/css" rel="stylesheet" href="https://liuyuxing1024.github.iocss/syntax.css">
+  <link type="text/css" rel="stylesheet" href="https://liuyuxing1024.github.iocss/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  
+</head>
+
+  <body class="theme-base-0d ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://liuyuxing1024.github.io"><h1>简单的Blog</h1></a>
+      <p class="lead">
+       一个简单的博客 
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="https://liuyuxing1024.github.io">Home</a> </li>
+        <li><a href="https://www.baidu.com/"> Baidu </a></li><li><a href="https://github.com/liuyuxing1024/"> Github </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2023. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1></h1>
+  <time datetime=0001-01-01T00:00:00Z class="post-date">Mon, Jan 1, 0001</time>
+  <p>来源:https://mp.weixin.qq.com/s/R6o6T-qGvgrB4xxXdUhd7A</p>
+<h2 id="github-actions-自动构建">GitHub Actions 自动构建</h2>
+<p>之前的文章我们已经讲过了如何利用 GitHub Pages 快速搭建一个自己的博客，并且我对现有比较热门的几个静态网站生成框架进行了对比，结论是选择 Hugo 作为技术选型。具体内容不再赘述，请自行查阅。</p>
+<p><a href="https://mp.weixin.qq.com/s?__biz=MzI3MTUyMTY2Mw==&amp;mid=2247488393&amp;idx=1&amp;sn=09c99b71222f4c763c3d240466b80360&amp;chksm=eac1d199ddb6588f94357deab13ad9573a982b527b04910716d1c9558d4b10d5ac054a72d1d7&amp;scene=21#wechat_redirect"><img src="https://mmbiz.qpic.cn/mmbiz_jpg/jPrkiafKmlHW4aucDpyF9ncM8Biakdeuro4AXd8frPc30pmWCTdbKXHExhKpop12E6xR3MRQrq5LBEdWdlkNF4Jg/640?wx_fmt=jpeg&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片">简单！这可能是最快速的个人博客搭建姿势！|原创</a></p>
+<p>因为Hugo在发布到 GitHub之前需要自行本地编译打包，然后才能把打包好的源码 push 到远程仓库，这就显得很繁琐。于是有人问，可以不需要手动编译直接部署吗？</p>
+<p>答案当然是有的！一切理论上可以偷懒的事情，都有程序做了，GitHub Actions 就解决了这个问题。持续集成由很多操作组成，比如抓取代码、运行测试、登录远程服务器，发布到第三方服务等等。GitHub 把这些操作就称为 Actions。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/jPrkiafKmlHXMBvQeLJudfYwfKIoktmb75druSfQNlsnVFMllg8MYtnr0W4ZBlGYb5J0iaib1QZNjK9YRcOoHsFJw/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<h2 id="配置-actions">配置 Actions</h2>
+<h3 id="1准备工作">1.准备工作</h3>
+<ul>
+<li>可以访问的 GitHub Pages</li>
+<li>Git</li>
+<li>本地源码</li>
+<li>Hugo 环境</li>
+</ul>
+<p>如果你阅读了之前的文章，这些准备工作已经就绪。</p>
+<h3 id="2创建-sub-mdules">2.创建 sub mdules</h3>
+<p>hugo 的主题（ themes） 是通过 Git 的 sub modules 拉取的，在 Git Actions 会在自动处理过程中会依赖子项目，没有 sub modules 文件会导致构建失败。这就需要我们在下载本地主题的时候是用 Git 的子 moudle 来拉取的，举个例子。</p>
+<pre tabindex="0"><code># 创建项目
+hugo new site quickstart 
+# 拉取主题
+git init
+git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
+# 添加主题到 配置文件中
+echo theme = \&#34;ananke\&#34; &gt;&gt; config.toml
+</code></pre><h3 id="heading"></h3>
+<h3 id="3创建-yml-配置文件">3.创建 yml 配置文件</h3>
+<p>官方默认推荐的是 Jekyll ，内核对其作了支持，会根据分支自动构建发布的，但是如果使用其他静态化网页框架就需要自己来使用 GitHub Actions 来实现，Actions 其实就是 GitHub 的 pipeline 版本，使用只需要一个配置文件 <code>.github/workflows/xxx.yml</code>，GitHub Actions 会默认读取并且解析。</p>
+<p>这里我们创建一个文件<code>my-pipeline.yml</code>。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/jPrkiafKmlHXMBvQeLJudfYwfKIoktmb73a4CcfeORhSDVO9icMd6PC3djrSLuD680qNAr69MicnbGtiaSMKdbfvXw/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<h3 id="heading-1"></h3>
+<h3 id="4配置-yml-文件">4.配置 yml 文件</h3>
+<p>这里有两个地方可能需要修改：一是构建的分支 <code>branches</code>，默认是main，二是域名，如果自定义域名需要修改<code>cname</code>。（通常情况下可以直接复制此文件使用）</p>
+<pre tabindex="0"><code>name: my-pipeline
+
+on:
+  push:
+    tags:
+      - &#39;*&#39;
+    branches:
+      - main # 制定需要构建的分支
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          submodules: true  # Fetch Hugo themes (true OR recursive)
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
+
+      - name: setup hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: &#39;0.92.0&#39;
+          extended: true
+
+      - name: build
+        #run: hugo --minify#
+        run: hugo -D
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: ${{ github.ref == &#39;refs/heads/main&#39; }}
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          # cname: xxx.com # 如果是自定义域名需要修改
+</code></pre><p>保存好之后可以查看 Acitons 选项，如果配置有效的话可以看到已经正在执行的Workflow。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/jPrkiafKmlHXMBvQeLJudfYwfKIoktmb7qdmvgnzH2QVnv7jq5Rdz68lbsXvmGlf2YiaH6NBLZibU2rHhFAepSAxQ/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<h3 id="heading-2"></h3>
+<h3 id="5选择-pages-自动构建分支">5.选择 Pages 自动构建分支</h3>
+<p>当完成了以上步骤的配置之后，如果操作全部正确，GitHub 对应仓库中会出现名为<code>gh-pages</code>的分支。此时进入<code>https://github.com/{你的名字}/{你的仓库}/settings/pages</code>页面，也就是仓库的<code>Settings</code>的<code>Pages</code>选项，选择部署的分支为<code>gh-pages</code>。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/jPrkiafKmlHXMBvQeLJudfYwfKIoktmb7o0wTEkrjcB5icUxI60PONJ81X3wnNx40LpZmVHBlRvIoGxKIicWKibjrQ/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt="图片"></p>
+<blockquote>
+<p>可能出现的问题：</p>
+<p>没有 pages 功能：只有公开项目才有，私有 项目不支持 gh-pages 分支不存在：没有成功触发 action，成功触发，会自动生成分支 gh-pages，并将静态资源保存在 gh-pages 上 cname 一直被重置：.github/workflows/my-pipeline.yml 最后一行没有设置好</p>
+</blockquote>
+<h3 id="heading-3"></h3>
+<h3 id="6actions-配置完成">6.Actions 配置完成</h3>
+<p>到这里所有的配置都完成了！后续我们只要提交 markdown 文件专注于写文章即可，无需关注繁琐的源码构建和提交过程，Actions 会帮助你完成这一切。</p>
+<p>如果发现提交的代码没有及时更新，可以刷新一下浏览器缓存，或者检查构建过程中是否有异常。</p>
+<p>如有疑问欢迎留言。</p>
+
+</div>
+
+
+    </main>
+
+    
+      
+    
+  </body>
+</html>

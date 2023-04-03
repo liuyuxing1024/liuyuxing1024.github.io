@@ -5,16 +5,30 @@
     <link>https://liuyuxing1024.github.io/post/</link>
     <description>Recent content in Posts on 简单的Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 15 Sep 2022 14:42:31 +0800</lastBuildDate><atom:link href="https://liuyuxing1024.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://liuyuxing1024.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>First</title>
-      <link>https://liuyuxing1024.github.io/post/first/</link>
-      <pubDate>Thu, 15 Sep 2022 14:42:31 +0800</pubDate>
+      <title></title>
+      <link>https://liuyuxing1024.github.io/post/%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://liuyuxing1024.github.io/post/first/</guid>
-      <description>第一条信息 干点什么呐？
-来一张图片吧</description>
+      <guid>https://liuyuxing1024.github.io/post/%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/</guid>
+      <description>来源:https://mp.weixin.qq.com/s/R6o6T-qGvgrB4xxXdUhd7A
+GitHub Actions 自动构建 之前的文章我们已经讲过了如何利用 GitHub Pages 快速搭建一个自己的博客，并且我对现有比较热门的几个静态网站生成框架进行了对比，结论是选择 Hugo 作为技术选型。具体内容不再赘述，请自行查阅。
+简单！这可能是最快速的个人博客搭建姿势！|原创
+因为Hugo在发布到 GitHub之前需要自行本地编译打包，然后才能把打包好的源码 push 到远程仓库，这就显得很繁琐。于是有人问，可以不需要手动编译直接部署吗？
+答案当然是有的！一切理论上可以偷懒的事情，都有程序做了，GitHub Actions 就解决了这个问题。持续集成由很多操作组成，比如抓取代码、运行测试、登录远程服务器，发布到第三方服务等等。GitHub 把这些操作就称为 Actions。
+配置 Actions 1.准备工作 可以访问的 GitHub Pages Git 本地源码 Hugo 环境 如果你阅读了之前的文章，这些准备工作已经就绪。
+2.创建 sub mdules hugo 的主题（ themes） 是通过 Git 的 sub modules 拉取的，在 Git Actions 会在自动处理过程中会依赖子项目，没有 sub modules 文件会导致构建失败。这就需要我们在下载本地主题的时候是用 Git 的子 moudle 来拉取的，举个例子。
+# 创建项目hugo new site quickstart # 拉取主题git initgit submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke# 添加主题到 配置文件中echo theme = \&amp;#34;ananke\&amp;#34; &amp;gt;&amp;gt; config.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://liuyuxing1024.github.io/post/%E9%9A%8F%E4%BE%BF%E5%86%99%E7%82%B9/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://liuyuxing1024.github.io/post/%E9%9A%8F%E4%BE%BF%E5%86%99%E7%82%B9/</guid>
+      <description>人 事 </description>
     </item>
     
   </channel>
